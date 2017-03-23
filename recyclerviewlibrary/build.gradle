@@ -1,4 +1,5 @@
 apply plugin: 'com.android.library'
+apply plugin: 'com.novoda.bintray-release'
 
 android {
     compileSdkVersion 23
@@ -23,4 +24,13 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.2.0'
     compile 'com.android.support:recyclerview-v7:23.2.0'
+}
+
+publish {
+    userOrg = 'bjchenxz'
+    groupId = 'com.cxz'
+    artifactId = 'recyclerviewlibrary'
+    publishVersion = '1.0.0'
+    desc = 'Achieve RecyclerView drop-down refresh and load more'
+    website = 'https://github.com/bjchenxz/PullLoadRecyclerView'
 }
