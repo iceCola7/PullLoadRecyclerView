@@ -28,7 +28,7 @@ dependencies {
 
 publish {
     userOrg = 'bjchenxz'
-    groupId = 'com.cxz.recyclerviewlibrary'
+    groupId = 'com.cxz.recyclerview'
     artifactId = 'pullloadrecyclerview'
     publishVersion = '1.0.0'
     desc = 'Achieve RecyclerView drop-down refresh and load more'

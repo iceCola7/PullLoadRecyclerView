@@ -1,4 +1,4 @@
-package com.cxz.recyclerlibrary;
+package com.cxz.recyclerview;
 
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
@@ -18,6 +18,8 @@ import android.view.View;
 import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+
+import com.cxz.recyclerlibrary.R;
 
 public class PullLoadMoreRecyclerView extends LinearLayout {
 
