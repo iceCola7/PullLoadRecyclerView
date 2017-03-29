@@ -28,8 +28,8 @@ dependencies {
 
 publish {
     userOrg = 'bjchenxz'
-    groupId = 'com.cxz'
-    artifactId = 'recyclerviewlibrary'
+    groupId = 'com.cxz.recyclerviewlibrary'
+    artifactId = 'pullloadrecyclerview'
     publishVersion = '1.0.0'
     desc = 'Achieve RecyclerView drop-down refresh and load more'
     website = 'https://github.com/bjchenxz/PullLoadRecyclerView'
