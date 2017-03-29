@@ -4,7 +4,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-    <com.cxz.recyclerview.PullLoadMoreRecyclerView
+    <com.cxz.recyclerlibrary.PullLoadMoreRecyclerView
         android:id="@+id/pullLoadMoreRecycleView"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
