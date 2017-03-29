@@ -1,6 +1,9 @@
 package com.cxz.recyclerlibrary;
 
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
 import android.content.Context;
+import android.support.v4.content.ContextCompat;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.widget.DefaultItemAnimator;
 import android.support.v7.widget.GridLayoutManager;
@@ -8,10 +11,13 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.support.v7.widget.StaggeredGridLayoutManager;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
+import android.view.animation.AccelerateDecelerateInterpolator;
 import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class PullLoadMoreRecyclerView extends LinearLayout {
 
@@ -23,6 +29,7 @@ public class PullLoadMoreRecyclerView extends LinearLayout {
     private boolean isLoadMore = false;
     private LinearLayout mFooterView;
     private Context mContext;
+    private TextView loadMoreText;
 
     public PullLoadMoreRecyclerView(Context context) {
         super(context);
@@ -53,16 +60,13 @@ public class PullLoadMoreRecyclerView extends LinearLayout {
                 new OnTouchListener() {
                     @Override
                     public boolean onTouch(View v, MotionEvent event) {
-                        if (isRefresh) {
-                            return true;
-                        } else {
-                            return false;
-                        }
+                        return isRefresh || isLoadMore;
                     }
                 }
         );
 
-        mFooterView = (LinearLayout) view.findViewById(R.id.footer_linearlayout);
+        mFooterView = (LinearLayout) view.findViewById(R.id.footer_layout);
+        loadMoreText = (TextView) view.findViewById(R.id.load_more_tv);
         mFooterView.setVisibility(View.GONE);
         this.addView(view);
 
@@ -110,23 +114,39 @@ public class PullLoadMoreRecyclerView extends LinearLayout {
     public RecyclerView getRecyclerView() {
         return mRecyclerView;
     }
+
     public SwipeRefreshLayout getSwipeRefreshLayout() {
         return mSwipeRefreshLayout;
     }
 
     public void loadMore() {
         if (mPullLoadMoreListener != null && hasMore) {
-            mFooterView.setVisibility(View.VISIBLE);
+            mFooterView.animate()
+                    .translationY(0)
+                    .setDuration(300)
+                    .setInterpolator(new AccelerateDecelerateInterpolator())
+                    .setListener(new AnimatorListenerAdapter() {
+                        @Override
+                        public void onAnimationStart(Animator animation) {
+                            mFooterView.setVisibility(View.VISIBLE);
+                        }
+                    })
+                    .start();
+            invalidate();
             mPullLoadMoreListener.onLoadMore();
         }
     }
 
     public void setPullLoadMoreCompleted() {
         isRefresh = false;
-        mSwipeRefreshLayout.setRefreshing(false);
+        setRefreshing(isRefresh);
 
         isLoadMore = false;
-        mFooterView.setVisibility(View.GONE);
+        mFooterView.animate()
+                .translationY(mFooterView.getHeight())
+                .setDuration(300)
+                .setInterpolator(new AccelerateDecelerateInterpolator())
+                .start();
     }
 
     public void setRefreshing(final boolean isRefreshing) {
@@ -150,8 +170,36 @@ public class PullLoadMoreRecyclerView extends LinearLayout {
         }
     }
 
+    /**
+     * 快速滑动到列表顶部
+     */
     public void scrollToTop() {
         mRecyclerView.scrollToPosition(0);
+    }
+
+    /**
+     * 设置加载更多的文字
+     * @param text
+     */
+    public void setFooterViewText(CharSequence text){
+        Log.i("TAG",loadMoreText.toString());
+        loadMoreText.setText(text);
+    }
+
+    /**
+     * 设置加载更多的文字
+     * @param resId
+     */
+    public void setFooterViewText(int resId){
+        loadMoreText.setText(resId);
+    }
+
+    /**
+     * 设置加载更多文字的颜色
+     * @param color
+     */
+    public void setFooterViewTextColor(int color){
+        loadMoreText.setTextColor(ContextCompat.getColor(mContext,color));
     }
 
     public void setAdapter(RecyclerView.Adapter adapter) {

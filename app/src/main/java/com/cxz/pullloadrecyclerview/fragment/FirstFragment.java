@@ -33,7 +33,8 @@ public class FirstFragment extends Fragment {
     public void onViewCreated(View view, Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         mPullLoadMoreRecyclerView = (PullLoadMoreRecyclerView) view.findViewById(R.id.pullLoadMoreRecycleView);
-        mPullLoadMoreRecyclerView.setRefreshing(false);
+        mPullLoadMoreRecyclerView.setRefreshing(true);
+        //mPullLoadMoreRecyclerView.setFooterViewText("loading...");
 
         new DataAsyncTask().execute();
         mPullLoadMoreRecyclerView.setLinearLayout();
@@ -72,7 +73,7 @@ public class FirstFragment extends Fragment {
         @Override
         protected List<String> doInBackground(Void... params) {
             try {
-                Thread.sleep(3000);
+                Thread.sleep(1000);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
