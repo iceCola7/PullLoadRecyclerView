@@ -10,7 +10,7 @@ import android.widget.Toast;
 
 import com.cxz.pullloadrecyclerview.R;
 import com.cxz.pullloadrecyclerview.adapter.StaggeredRecycleViewAdapter;
-import com.cxz.recyclerlibrary.PullLoadMoreRecyclerView;
+import com.cxz.recyclerview.PullLoadMoreRecyclerView;
 
 import java.util.ArrayList;
 import java.util.HashMap;

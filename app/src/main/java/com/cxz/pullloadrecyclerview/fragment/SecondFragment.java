@@ -11,7 +11,7 @@ import android.widget.Toast;
 
 import com.cxz.pullloadrecyclerview.R;
 import com.cxz.pullloadrecyclerview.adapter.RecyclerViewAdapter;
-import com.cxz.recyclerlibrary.PullLoadMoreRecyclerView;
+import com.cxz.recyclerview.PullLoadMoreRecyclerView;
 
 import java.util.ArrayList;
 import java.util.List;

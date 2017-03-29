@@ -1,4 +1,4 @@
-package com.cxz.recyclerlibrary;
+package com.cxz.recyclerview;
 
 import org.junit.Test;
 

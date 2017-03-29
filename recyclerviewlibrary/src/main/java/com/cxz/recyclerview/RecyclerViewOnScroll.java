@@ -1,4 +1,4 @@
-package com.cxz.recyclerlibrary;
+package com.cxz.recyclerview;
 
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.LinearLayoutManager;
