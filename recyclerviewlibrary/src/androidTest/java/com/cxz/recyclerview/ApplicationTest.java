@@ -1,4 +1,4 @@
-package com.cxz.recyclerlibrary;
+package com.cxz.recyclerview;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;
