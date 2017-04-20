@@ -5,5 +5,5 @@
 ## 使用方式
 ### build.gradle文件
 ```
-compile 'com.cxz.recyclerview:pullloadrecyclerview:1.0.0'
+compile 'com.cxz.recyclerview:pullloadrecyclerview:1.0.1'
 ```
