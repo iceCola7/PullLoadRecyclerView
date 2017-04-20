@@ -30,7 +30,7 @@ publish {
     userOrg = 'bjchenxz'
     groupId = 'com.cxz.recyclerview'
     artifactId = 'pullloadrecyclerview'
-    publishVersion = '1.0.0'
+    publishVersion = '1.0.1'
     desc = 'Achieve RecyclerView drop-down refresh and load more'
     website = 'https://github.com/bjchenxz/PullLoadRecyclerView'
 }
